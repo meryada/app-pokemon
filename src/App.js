@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {fetchPokemones} from './services/fetchPokemons';
 import { PokeList } from './components/PokeList';
+import { Filters } from './components/Filters';
 
 class App extends React.Component {
   constructor(props) {
@@ -40,17 +41,19 @@ class App extends React.Component {
     const {pokemons, query} = this.state;
     return (
       <div className="app">
-      <h1>Mi lista de Pokemons</h1>
-      <label>Escribe el nombre del pokemon que quieras buscar:</label>
-      <input onChange={this.getUserQuery}></input>
-      <PokeList 
-        pokemons = { pokemons }
-        query = {query}
-      />
-        </div>
-        );
-      }
+        <h1>Mi lista de Pokemons</h1>
+        <Filters 
+          getUserQuery={this.getUserQuery}
+          query = {query}
+        />
+        <PokeList 
+          pokemons = { pokemons }
+          query = {query}
+        />
+      </div>
+      );
     }
+  }
     
     export default App;
     
