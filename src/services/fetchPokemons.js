@@ -4,4 +4,4 @@ const fetchPokemones = () => {
     return fetch(ENDPOINT).then(res => res.json())
 }
 
-export {fetchPokemones};
+export { fetchPokemones };

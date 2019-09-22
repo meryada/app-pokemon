@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {fetchPokemones} from './services/fetchPokemons';
+import { PokeList } from './components/PokeList';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,23 +28,11 @@ class App extends React.Component {
   
   render() {
     console.log('Me estoy pintando', this.state.pokemons.length);
+    const {pokemons} = this.state;
     return (
       <div className="app">
       <h1>Mi lista de Pokemons</h1>
-      <ul>
-      {this.state.pokemons.map(item => {
-        return(
-          <li key={item.id}>
-            <div>
-              <h2>{item.name}</h2>
-                <div>
-                  <img src={item.url} alt= {`Imagen de ${item.name}`}/>
-                </div>
-            </div>
-          </li>
-          )
-        })}
-        </ul>
+      <PokeList pokemons = { pokemons } />
         </div>
         );
       }
