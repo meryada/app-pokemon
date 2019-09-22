@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 
 
 const PokeList = props => {
-  const {pokemons} = props;
+  const { pokemons, query } = props;
   return (
     <ol>
-      {pokemons.map(item => {
+      {pokemons
+        .filter(myPokemon => myPokemon.name.toUpperCase().includes(query.toUpperCase()))
+        .map(item => {
         return(
           <li key={item.id}>
             <PokeCard 
@@ -22,7 +24,8 @@ const PokeList = props => {
     };
 
     PokeList.propTypes = {
-      pokemons: PropTypes.arrayOf(PropTypes.object).isRequired 
+      pokemons: PropTypes.arrayOf(PropTypes.object).isRequired,
+      query: PropTypes.string.isRequired
     }
     
     export { PokeList };

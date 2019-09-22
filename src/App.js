@@ -8,8 +8,10 @@ class App extends React.Component {
     super(props);
     
     this.state = {
-      pokemons : []
+      pokemons : [],
+      query: ''
     }
+    this.getUserQuery = this.getUserQuery.bind(this)
   }
   
   // hacer la petición aquí cuando sean automáticas
@@ -26,13 +28,25 @@ class App extends React.Component {
     })
   }
   
+  getUserQuery (event){
+    const userQuery = event.currentTarget.value;
+    this.setState({
+      query: userQuery
+    })
+  }
+
   render() {
     console.log('Me estoy pintando', this.state.pokemons.length);
-    const {pokemons} = this.state;
+    const {pokemons, query} = this.state;
     return (
       <div className="app">
       <h1>Mi lista de Pokemons</h1>
-      <PokeList pokemons = { pokemons } />
+      <label>Escribe el nombre del pokemon que quieras buscar:</label>
+      <input onChange={this.getUserQuery}></input>
+      <PokeList 
+        pokemons = { pokemons }
+        query = {query}
+      />
         </div>
         );
       }
