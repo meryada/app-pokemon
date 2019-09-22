@@ -1,6 +1,7 @@
 import React from 'react';
 import {PokeCard} from './PokeCard';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 
 const PokeList = props => {
@@ -12,10 +13,12 @@ const PokeList = props => {
         .map(item => {
         return(
           <li key={item.id}>
+            <Link to="/poke-detail">
             <PokeCard 
             name={item.name}
             url={item.url}
             />
+            </Link>
           </li>
           )
         })}
